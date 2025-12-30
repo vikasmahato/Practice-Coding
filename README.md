@@ -557,6 +557,81 @@ Challenge repos:
     - [Cracking The Code Interview](https://www.youtube.com/watch?v=4NIb9l3imAo)
     - [Cracking the Coding Interview - Fullstack Speaker Series](https://www.youtube.com/watch?v=Eg5-tdAwclo)
 
+## AI / Machine Learning / LLM Interview Topics
+
+- **Foundations**
+    - [ ] Supervised vs unsupervised vs reinforcement learning
+    - [ ] Bias/variance tradeoff, overfitting/underfitting, regularization, cross‑validation
+    - [ ] Core metrics: accuracy, precision/recall, F1, ROC‑AUC, logloss, regression metrics (MSE/MAE/R²)
+
+- **Classical ML and Feature Engineering**
+    - [ ] Linear/logistic regression, decision trees, random forests, gradient boosting (XGBoost/LightGBM)
+    - [ ] Feature scaling, encoding, feature selection, leakage and data splitting strategy
+
+- **Deep Learning and NLP**
+    - [ ] Basics of neural networks, CNNs vs RNNs vs Transformers
+    - [ ] Word embeddings, attention, sequence‑to‑sequence models
+
+- **LLMs and Generative AI**
+    - [ ] How transformers work at a high level (self‑attention, positional encoding)
+    - [ ] Prompt design, few‑shot vs fine‑tuning, retrieval‑augmented generation (RAG)
+    - [ ] Safety, hallucinations, evaluation of LLM systems (automatic vs human evaluation)
+
+- **ML/AI System Design**
+    - [ ] Design an end‑to‑end recommendation/search/forecasting/LLM‑based system
+    - [ ] Online vs offline inference, latency/throughput/SLOs, A/B testing and experiment design
+    - [ ] Monitoring drift, data quality, model performance in production
+
+- **MLOps / Platforms**
+    - [ ] Feature stores, model registry, CI/CD for models
+    - [ ] Data versioning, reproducibility, lineage, governance
+
+
+## Topics for 5+ Years of Experience
+
+- **System Design and Architecture**
+    - [ ] Design scalable, highly available, observable services (APIs, event‑driven systems, batch pipelines)
+    - [ ] Trade‑offs: monolith vs microservices, REST vs gRPC, sync vs async, SQL vs NoSQL
+    - [ ] Caching, database indexing/partitioning, message queues, backpressure, rate limiting
+
+- **Ownership and Execution**
+    - [ ] Leading projects end‑to‑end: requirements, design docs, breaking work into milestones
+    - [ ] Handling ambiguity, de‑risking, communicating trade‑offs with PMs and stakeholders
+
+- **Code Quality and Reliability**
+    - [ ] Designing clean interfaces, enforcing invariants, refactoring legacy code
+    - [ ] Testing strategy at scale (unit, integration, contract, load tests)
+    - [ ] Observability: logs, metrics, traces, SLOs/error budgets, on‑call practices
+
+- **Leadership and Collaboration**
+    - [ ] Mentoring juniors, doing effective code reviews
+    - [ ] Driving cross‑team initiatives, aligning on standards and best practices
+
+
+## Data Engineering (Spark / Scala / Batch Jobs)
+
+- **Data Modeling and Warehousing**
+    - [ ] OLTP vs OLAP, star vs snowflake schema, dimensional modeling
+    - [ ] Partitioning, bucketing, file formats (Parquet/ORC/Avro), lakehouse vs warehouse concepts
+
+- **Spark and Scala Fundamentals**
+    - [ ] Spark core concepts: RDD vs DataFrame/Dataset, transformations vs actions, lazy evaluation
+    - [ ] Spark execution model: jobs, stages, tasks, shuffles, wide vs narrow dependencies
+    - [ ] Writing idiomatic Scala for data pipelines (immutability, collections, functional patterns)
+
+- **Performance and Reliability**
+    - [ ] Joins and skew handling, partition sizing, broadcast joins, caching strategies
+    - [ ] Memory management, shuffle tuning, avoiding small files, optimizing read/write patterns
+
+- **Batch and Streaming Pipelines**
+    - [ ] Designing robust ETL/ELT pipelines: ingestion, transformation, enrichment, publishing
+    - [ ] Batch vs streaming vs micro‑batch (Spark Structured Streaming, Kafka, etc. – high‑level concepts)
+    - [ ] Idempotency, exactly‑once semantics (conceptual), late/duplicate data handling
+
+- **Orchestration and Operations**
+    - [ ] Job scheduling/orchestration (Cron, Airflow, Dagster, etc. – high‑level)
+    - [ ] Data quality checks, SLAs/SLOs for pipelines, lineage and governance
+
 ## Your Resume
 
 - See Resume prep items in Cracking The Coding Interview and back of Programming Interviews Exposed
