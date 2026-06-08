@@ -1,799 +1,381 @@
-## Prerequisite Knowledge
+## Core CS Knowledge (Concepts, Not Implementations)
 
-- [ ] **Know about your language:**
-    - [ ] [JDK, JVM and JRE](https://www.youtube.com/watch?v=BXFHuaQNnLo)
-    - [ ] [How Java works](https://www.youtube.com/watch?v=fhfVkPpIwjk)
-    - [ ] [How JVM works](https://www.youtube.com/watch?v=ZBJ0u9MaKtM)
-    - [ ] [Garbage Collector](https://www.youtube.com/watch?v=UnaNQgzw4zY)
-    - [ ] [JIT compiler](https://www.youtube.com/watch?v=GXUiEouK7DM)
-    - [ ] [Watch with Popcorn](https://www.youtube.com/watch?v=JLFjY6Ixct8)
-    - [ ] [Java Keywords: Learn about each of them](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html)
+At 7 years in, the goal is depth and sharpness — not re-implementing linked lists.
 
-- ### Garbage collection
-    - [ ] [Compilers (video)](https://www.youtube.com/playlist?list=PLO9y7hOkmmSGTy5z6HZ-W4k2y8WXF7Bff)
-    - [ ] [GC in Python (video)](https://www.youtube.com/watch?v=iHVs_HkjdmI)
-    - [ ] [Deep Dive Java: Garbage Collection is Good!](https://www.infoq.com/presentations/garbage-collection-benefits)
-    - [ ] [Deep Dive Python: Garbage Collection in CPython (video)](https://www.youtube.com/watch?v=P-8Z0-MhdQs&list=PLdzf4Clw0VbOEWOS_sLhT_9zaiQDrS5AR&index=3)
+- ### Algorithmic Complexity
+    - Know Big-O cold: time and space for all major data structures and algorithms
+    - Amortized analysis (dynamic arrays, union-find), average vs worst case
+    - [Cheat sheet](http://bigocheatsheet.com/)
 
+- ### Data Structures — Know, Don't Re-implement
+    - Arrays, Linked Lists, Stack, Queue, Deque — know complexity guarantees
+    - Hash tables: collision resolution (chaining vs open addressing), load factor, rehashing
+    - Heaps / Priority Queues: heapify, heap sort, use-cases
+    - Trees: BST, AVL, Red-Black, B-Trees (critical for DB internals)
+    - Tries, Segment Trees, Fenwick Trees — when to reach for them
+    - Graphs: adjacency list vs matrix, BFS/DFS, Dijkstra, Bellman-Ford, topological sort
 
-## Algorithmic complexity / Big-O / Asymptotic analysis
-- [ ] [Harvard CS50 - Asymptotic Notation (video)](https://www.youtube.com/watch?v=iOq5kSKqeR4)
-- [ ] [Big O Notations (general quick tutorial) (video)](https://www.youtube.com/watch?v=V6mKVRU1evU)
-- [ ] [A Gentle Introduction to Algorithm Complexity Analysis](http://discrete.gr/complexity/)
-- [ ] TopCoder (includes recurrence relations and master theorem):
-    - [Computational Complexity: Section 1](https://www.topcoder.com/community/data-science/data-science-tutorials/computational-complexity-section-1/)
-    - [Computational Complexity: Section 2](https://www.topcoder.com/community/data-science/data-science-tutorials/computational-complexity-section-2/)
-- [ ] [Cheat sheet](http://bigocheatsheet.com/)
-
-    If some of the lectures are too mathy, you can skip them
-
-## Data Structures
-
-- ### Arrays
-    - [ ] Implement a vector (mutable array with automatic resizing):
-        - [ ] new raw data array with allocated memory
-            - can allocate int array under the hood, just not use its features
-            - start with 16, or if starting number is greater, use power of 2 - 16, 32, 64, 128
-        - [ ] size() - number of items
-        - [ ] capacity() - number of items it can hold
-        - [ ] is_empty()
-        - [ ] at(index) - returns item at given index, blows up if index out of bounds
-        - [ ] push(item)
-        - [ ] insert(index, item) - inserts item at index, shifts that index's value and trailing elements to the right
-        - [ ] prepend(item) - can use insert above at index 0
-        - [ ] pop() - remove from end, return value
-        - [ ] delete(index) - delete item at index, shifting all trailing elements left
-        - [ ] remove(item) - looks for value and removes index holding it (even if in multiple places)
-        - [ ] find(item) - looks for value and returns first index with that value, -1 if not found
-        - [ ] resize(new_capacity) // private function
-            - when you reach capacity, resize to double the size
-            - when popping an item, if size is 1/4 of capacity, resize to half
-    - [ ] Time
-        - O(1) to add/remove at end (amortized for allocations for more space), index, or update
-        - O(n) to insert/remove elsewhere
-    - [ ] Space
-        - contiguous in memory, so proximity helps performance
-        - space needed = (array capacity, which is >= n) * size of item, but even if 2n, still O(n)
-
-- ### Linked Lists
-    - [ ] [Linked List Implementation part 1](https://www.youtube.com/watch?v=SMIq13-FZSE)
-    - [ ] [Linked List Implementation part 2](https://www.youtube.com/watch?v=AeqXFjCUcQM)
-    - [ ] implement:
-        - [ ] size() - returns number of data elements in list
-        - [ ] empty() - bool returns true if empty
-        - [ ] value_at(index) - returns the value of the nth item (starting at 0 for first)
-        - [ ] push_front(value) - adds an item to the front of the list
-        - [ ] pop_front() - remove front item and return its value
-        - [ ] push_back(value) - adds an item at the end
-        - [ ] pop_back() - removes end item and returns its value
-        - [ ] front() - get value of front item
-        - [ ] back() - get value of end item
-        - [ ] insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
-        - [ ] erase(index) - removes node at given index
-        - [ ] value_n_from_end(n) - returns the value of the node at nth position from the end of the list
-        - [ ] reverse() - reverses the list
-        - [ ] remove_value(value) - removes the first item in the list with this value
-    - [ ] Doubly-linked List
-        - [Description (video)](https://www.coursera.org/learn/data-structures/lecture/jpGKD/doubly-linked-lists)
-        - No need to implement
-
-- ### Stack
-    - [ ] learn About Stacks
-    - [ ] Implement Stack using array
-        - push(value)
-        - pop()
-        - top()
-        - empty()
-    - [ ] Implement stack using two queues
-        - push(value)
-        - pop()
-        - top()
-        - empty()
-
-- ### Queue
-    - [ ] learn About Queue
-    - [ ] [Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)
-    - [ ] Implement using linked-list, with tail pointer:
-        - enqueue(value) - adds value at position at tail
-        - dequeue() - returns value and removes least recently added element (front)
-        - empty()
-    - [ ] Implement using fixed-sized array:
-        - enqueue(value) - adds item at end of available storage
-        - dequeue() - returns value and removes least recently added element
-        - empty()
-        - full()
-    - [ ] Implement stack using two queues
-        - enqueue(value) - adds item at end of available storage
-        - dequeue() - returns value and removes least recently added element
-        - empty()
-        - full()
-    - [ ] Cost:
-        - a bad implementation using linked list where you enqueue at head and dequeue at tail would be O(n)
-            because you'd need the next to last element, causing a full traversal each dequeue
-        - enqueue: O(1) (amortized, linked list and array [probing])
-        - dequeue: O(1) (linked list and array)
-        - empty: O(1) (linked list and array)
-
-- ### Hash table
-    - [ ] [How hashmap works in java](http://javarevisited.blogspot.in/2011/02/how-hashmap-works-in-java.html)
-      - [ ] Videos:
-        - [ ] [Hashing with Chaining (video)](https://www.youtube.com/watch?v=0M_kIqhwbFo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=8)
-        - [ ] [Table Doubling, Karp-Rabin (video)](https://www.youtube.com/watch?v=BRO7mVIFt08&index=9&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
-        - [ ] [Open Addressing, Cryptographic Hashing (video)](https://www.youtube.com/watch?v=rvdJDijO2Ro&index=10&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
-
-    - [ ] implement with array using linear probing
-        - hash(k, m) - m is size of hash table
-        - add(key, value) - if key already exists, update value
-        - exists(key)
-        - get(key)
-        - remove(key)
-
-## More Knowledge
-
-- ### Binary search
-    - [ ] [Binary Search (video)](https://www.youtube.com/watch?v=D5SrAga1pno)
-    - [ ] [Binary Search (video)](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)
-    - [ ] [detail](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
-    - [ ] Implement:
-        - binary search (on sorted array of integers)
-        - binary search using recursion
-
-## Trees
-
-- ### Trees - Notes & Background
-    - basic tree construction
-    - traversal
-    - manipulation algorithms
-    - BFS (breadth-first search)
-        - [MIT (video)](https://www.youtube.com/watch?v=s-CYnVz-uh4&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=13)
-        - [ ] level order (BFS, using queue)
-            time complexity: O(n)
-            space complexity: best: O(1), worst: O(n/2)=O(n)
-    - DFS (depth-first search)
-        - [MIT (video)](https://www.youtube.com/watch?v=AfSk24UTFS8&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=14)
-        - notes:
-            time complexity: O(n)
-            space complexity:
-                best: O(log n) - avg. height of tree
-                worst: O(n)
-        - [ ] inorder (DFS: left, self, right)
-        - [ ] postorder (DFS: left, right, self)
-        - [ ] preorder (DFS: self, left, right)
-
-- ### Binary search trees: BSTs
-    - [ ] [Binary Search Tree Review (video)](https://www.youtube.com/watch?v=x6At0nzX92o&index=1&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6)
-    - [ ] [MIT (video)](https://www.youtube.com/watch?v=9Jry5-82I68)
-    - C/C++ (You can search for similar videos in Java):
-        - [ ] [Binary search tree - Implementation in C/C++ (video)](https://www.youtube.com/watch?v=COZK7NATh4k&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=28)
-        - [ ] [BST implementation - memory allocation in stack and heap (video)](https://www.youtube.com/watch?v=hWokyBoo0aI&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=29)
-        - [ ] [Find min and max element in a binary search tree (video)](https://www.youtube.com/watch?v=Ut90klNN264&index=30&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
-        - [ ] [Find height of a binary tree (video)](https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31)
-        - [ ] [Binary tree traversal - breadth-first and depth-first strategies (video)](https://www.youtube.com/watch?v=9RHO6jU--GU&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=32)
-        - [ ] [Binary tree: Level Order Traversal (video)](https://www.youtube.com/watch?v=86g8jAQug04&index=33&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
-        - [ ] [Binary tree traversal: Preorder, Inorder, Postorder (video)](https://www.youtube.com/watch?v=gm8DUJJhmY4&index=34&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
-        - [ ] [Check if a binary tree is binary search tree or not (video)](https://www.youtube.com/watch?v=yEwSGhSsT0U&index=35&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
-        - [ ] [Delete a node from Binary Search Tree (video)](https://www.youtube.com/watch?v=gcULXE7ViZw&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=36)
-        - [ ] [Inorder Successor in a binary search tree (video)](https://www.youtube.com/watch?v=5cPbNCrdotA&index=37&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
-    - [ ] Implement:
-        - [ ] insert    // insert value into tree
-        - [ ] get_node_count // get count of values stored
-        - [ ] print_values // prints the values in the tree, from min to max
-        - [ ] delete_tree
-        - [ ] is_in_tree // returns true if given value exists in the tree
-        - [ ] get_height // returns the height in nodes (single node's height is 1)
-        - [ ] get_min   // returns the minimum value stored in the tree
-        - [ ] get_max   // returns the maximum value stored in the tree
-        - [ ] is_binary_search_tree
-        - [ ] delete_value
-        - [ ] get_successor // returns next-highest value in tree after given value, -1 if none
-
-- ### Heap / Priority Queue / Binary Heap
-    - visualized as a tree, but is usually linear in storage (array, linked list)
-    - [ ] Read about heap data structure and its aplications
-    - [ ] [Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))
-    - [ ] [Heap Sort - jumps to start (video)](https://youtu.be/odNJmw5TOEE?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3291)
-    - [ ] [MIT: Heaps and Heap Sort (video)](https://www.youtube.com/watch?v=B7hVxCmfPtM&index=4&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
-    - [ ] [Linear Time BuildHeap (max-heap)](https://www.youtube.com/watch?v=MiyLo8adrWw)
-    - [ ] Implement a max-heap:
-        - [ ] insert
-        - [ ] sift_up - needed for insert
-        - [ ] get_max - returns the max item, without removing it
-        - [ ] get_size() - return number of elements stored
-        - [ ] is_empty() - returns true if heap contains no elements
-        - [ ] extract_max - returns the max item, removing it
-        - [ ] sift_down - needed for extract_max
-        - [ ] remove(i) - removes item at index x
-        - [ ] heapify - create a heap from an array of elements, needed for heap_sort
-        - [ ] heap_sort() - take an unsorted array and turn it into a sorted array in-place using a max heap
-            - note: using a min heap instead would save operations, but double the space needed (cannot do in-place).
-
-## Sorting
-
-- [ ] Notes:
-    - Implement sorts & know best case/worst case, average complexity of each:
-        - no bubble sort - it's terrible - O(n^2), except when n <= 16
-    - [ ] stability in sorting algorithms ("Is Quicksort stable?")
-        - [Sorting Algorithm Stability](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability)
-        - [Stability In Sorting Algorithms](http://stackoverflow.com/questions/1517793/stability-in-sorting-algorithms)
-        - [Stability In Sorting Algorithms](http://www.geeksforgeeks.org/stability-in-sorting-algorithms/)
-        - [Sorting Algorithms - Stability](http://homepages.math.uic.edu/~leon/cs-mcs401-s08/handouts/stability.pdf)
-    - [ ] Which algorithms can be used on linked lists? Which on arrays? Which on both?
-        - I wouldn't recommend sorting a linked list, but merge sort is doable.
-        - [Merge Sort For Linked List](http://www.geeksforgeeks.org/merge-sort-for-linked-list/)
-
-- For heapsort, see Heap data structure above. Heap sort is great, but not stable.
-
-- [ ] [Sedgewick - Mergesort (5 videos)](https://www.youtube.com/watch?v=4nKwesx_c8E&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9)
-    - [ ] [1. Mergesort](https://www.youtube.com/watch?v=4nKwesx_c8E&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9&index=1)
-    - [ ] [2. Bottom up Mergesort](https://www.youtube.com/watch?v=HGOIGUYjeyk&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9&index=2)
-    - [ ] [3. Sorting Complexity](https://www.youtube.com/watch?v=WvU_mIWo0Ac&index=3&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9)
-    - [ ] [4. Comparators](https://www.youtube.com/watch?v=7MvC1kmBza0&index=4&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9)
-    - [ ] [5. Stability](https://www.youtube.com/watch?v=XD_5iINB5GI&index=5&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9)
-
-- [ ] [Sedgewick - Quicksort (4 videos)](https://www.youtube.com/playlist?list=PLe-ggMe31CTeE3x2-nF1-toca1QpuXwE1)
-    - [ ] [1. Quicksort](https://www.youtube.com/watch?v=5M5A7qPWk84&index=1&list=PLe-ggMe31CTeE3x2-nF1-toca1QpuXwE1)
-    - [ ] [2. Selection](https://www.youtube.com/watch?v=CgVYfSyct_M&index=2&list=PLe-ggMe31CTeE3x2-nF1-toca1QpuXwE1)
-    - [ ] [3. Duplicate Keys](https://www.youtube.com/watch?v=WBFzOYJ5ybM&index=3&list=PLe-ggMe31CTeE3x2-nF1-toca1QpuXwE1)
-    - [ ] [4. System Sorts](https://www.youtube.com/watch?v=rejpZ2htBjE&index=4&list=PLe-ggMe31CTeE3x2-nF1-toca1QpuXwE1)
-
-- [ ] [Bubble Sort (video)](https://www.youtube.com/watch?v=P00xJgWzz2c&index=1&list=PL89B61F78B552C1AB)
-- [ ] [Analyzing Bubble Sort (video)](https://www.youtube.com/watch?v=ni_zk257Nqo&index=7&list=PL89B61F78B552C1AB)
-- [ ] [Insertion Sort, Merge Sort (video)](https://www.youtube.com/watch?v=Kg4bqzAqRBM&index=3&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
-- [ ] [Insertion Sort (video)](https://www.youtube.com/watch?v=c4BRHC7kTaQ&index=2&list=PL89B61F78B552C1AB)
-- [ ] [Merge Sort (video)](https://www.youtube.com/watch?v=GCae1WNvnZM&index=3&list=PL89B61F78B552C1AB)
-- [ ] [Quicksort (video)](https://www.youtube.com/watch?v=y_G9BkAm6B8&index=4&list=PL89B61F78B552C1AB)
-- [ ] [Selection Sort (video)](https://www.youtube.com/watch?v=6nDMgr0-Yyo&index=8&list=PL89B61F78B552C1AB)
-
-- [ ] Merge sort code:
-    - [ ] [Using output array (C)](http://www.cs.yale.edu/homes/aspnes/classes/223/examples/sorting/mergesort.c)
-    - [ ] [Using output array (Python)](https://github.com/jwasham/practice-python/blob/master/merge_sort/merge_sort.py)
-    - [ ] [In-place (C++)](https://github.com/jwasham/practice-cpp/blob/master/merge_sort/merge_sort.cc)
-- [ ] Quick sort code:
-    - [ ] [Implementation (C)](http://www.cs.yale.edu/homes/aspnes/classes/223/examples/randomization/quick.c)
-    - [ ] [Implementation (C)](https://github.com/jwasham/practice-c/blob/master/quick_sort/quick_sort.c)
-    - [ ] [Implementation (Python)](https://github.com/jwasham/practice-python/blob/master/quick_sort/quick_sort.py)
-
-- [ ] Implement:
-    - [ ] Mergesort: O(n log n) average and worst case
-    - [ ] Quicksort O(n log n) average case
-    - Selection sort and insertion sort are both O(n^2) average and worst case
-    - For heapsort, see Heap data structure above.
-
-- [ ] Not required, but I recommended them:
-    - [ ] [Sorting in Linear Time (video)](https://www.youtube.com/watch?v=pOKy3RZbSws&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf&index=14)
-
-As a summary, here is a visual representation of [15 sorting algorithms](https://www.youtube.com/watch?v=kPRA0W1kECg).
-
-
-## Interview Question Round 1
-
-- [ ] [Reverse array in groups of given size](https://www.geeksforgeeks.org/reverse-an-array-in-groups-of-given-size/?ref=lbp)
-- [ ] [LCM of two numbers](https://www.geeksforgeeks.org/program-to-find-lcm-of-two-numbers/?ref=lbp)
-- [ ] [HCF of two numbers](https://www.geeksforgeeks.org/c-program-find-gcd-hcf-two-numbers/?ref=lbp)
-- [ ] [Decimal to binary conversion](https://www.geeksforgeeks.org/program-decimal-binary-conversion/?ref=leftbar-rightbar)
-- [ ] [Roman to integer conversion](https://www.geeksforgeeks.org/converting-roman-numerals-decimal-lying-1-3999/)
-  
-- [ ] [Subarray with given sum](https://www.geeksforgeeks.org/find-subarray-with-given-sum/)
-- [ ] [Subsequence sum](https://www.geeksforgeeks.org/find-all-subsequences-with-sum-equals-to-k/)
-- [ ] [Kadane's Algorithm](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/)
-- [ ] [merge two sorted arays](https://www.geeksforgeeks.org/merge-two-sorted-arrays/)
-- [ ] [detect loop in a linked list](https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/?ref=lbp)
-
-- [ ] [Check paranthesis](https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/1)
-- [ ] [next greater element](https://practice.geeksforgeeks.org/problems/next-larger-element-1587115620/1)
-- [ ] [check if a tree is a BST](https://practice.geeksforgeeks.org/problems/check-for-bst/1)
-- [ ] [Check if two trees are identical](https://practice.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1)
-- [ ] [check if trees are balanced](https://practice.geeksforgeeks.org/problems/check-for-balanced-tree/1)
-
-- [ ] [K-th smallest element](https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1)
-- [ ] [Trapping rainwater](https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1)
-- [ ] [Stock buy and sell](https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1)
-- [ ] [Convert array in zig zag fashion](https://practice.geeksforgeeks.org/problems/convert-array-into-zig-zag-fashion1638/1)
-- [ ] [Spirally traversing a matrix](https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1)
-  
-- [ ] [Longest palindrome in a string](https://practice.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1)
-- [ ] [Permutaton of a string](https://practice.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1)
-- [ ] [Longest common prefix](https://practice.geeksforgeeks.org/problems/longest-common-prefix-in-an-array5129/1)
-- [ ] [maximum of all subarrays of size K](https://practice.geeksforgeeks.org/problems/maximum-of-all-subarrays-of-size-k3101/1)
-- [ ] [max path sum](https://practice.geeksforgeeks.org/problems/maximum-path-sum/1)
-  
-- [ ] [Lowest Common ancestor](https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/)
-- [ ] [Left View of a tree](https://www.geeksforgeeks.org/print-left-view-binary-tree/)
-- [ ] [Top View of a tree](https://www.geeksforgeeks.org/print-nodes-top-view-binary-tree/?ref=lbp)
-- [ ] [Bottom view of a tree](https://www.geeksforgeeks.org/bottom-view-binary-tree/)
-- [ ] [Diameter of a tree](https://www.geeksforgeeks.org/diameter-of-a-binary-tree/)
-  
-- [ ] [Number of paths](https://practice.geeksforgeeks.org/problems/number-of-paths0926/1)
-- [ ] [Flood fill algorithm](https://practice.geeksforgeeks.org/problems/flood-fill-algorithm1856/1)
-- [ ] [Rat in a maze](https://www.geeksforgeeks.org/rat-in-a-maze-backtracking-2/?ref=lbp)
-- [ ] [Subset sum](https://www.geeksforgeeks.org/subset-sum-backtracking-4/?ref=lbp)
-- [ ] [sieve of eratosthenes](https://www.geeksforgeeks.org/sieve-of-eratosthenes/)
-
-## Even More Knowledge
-
-- ### Recursion
-    - [ ] Stanford lectures on recursion & backtracking:
-        - [ ] [Lecture 8 | Programming Abstractions (video)](https://www.youtube.com/watch?v=gl3emqCuueQ&list=PLFE6E58F856038C69&index=8)
-        - [ ] [Lecture 9 | Programming Abstractions (video)](https://www.youtube.com/watch?v=uFJhEPrbycQ&list=PLFE6E58F856038C69&index=9)
-        - [ ] [Lecture 10 | Programming Abstractions (video)](https://www.youtube.com/watch?v=NdF1QDTRkck&index=10&list=PLFE6E58F856038C69)
-        - [ ] [Lecture 11 | Programming Abstractions (video)](https://www.youtube.com/watch?v=p-gpaIGRCQI&list=PLFE6E58F856038C69&index=11)
-    - when it is appropriate to use it
-    - how is tail recursion better than not?
-        - [ ] [What Is Tail Recursion Why Is It So Bad?](https://www.quora.com/What-is-tail-recursion-Why-is-it-so-bad)
-        - [ ] [Tail Recursion (video)](https://www.youtube.com/watch?v=L1jjXGfxozc)
+- ### Sorting & Searching
+    - Mergesort, Quicksort, Heapsort — know stability, space complexity, pivot strategies
+    - Binary search and variants (rotated arrays, first/last occurrence, answer-space binary search)
+    - Radix sort / counting sort when applicable
 
 - ### Dynamic Programming
-    - TODO
-    
-- ### Object-Oriented Programming
-    - [ ] [Optional: UML 2.0 Series (video)](https://www.youtube.com/watch?v=OkC7HKtiZC0&list=PLGLfVvz_LVvQ5G-LdJ8RLqe-ndo7QITYc)
-    - [ ] Object-Oriented Software Engineering: Software Dev Using UML and Java (21 videos):
-        - Can skip this if you have a great grasp of OO and OO design practices.
-        - [OOSE: Software Dev Using UML and Java](https://www.youtube.com/playlist?list=PLJ9pm_Rc9HesnkwKlal_buSIHA-jTZMpO)
-    - [ ] SOLID OOP Principles:
-        - [ ] [Bob Martin SOLID Principles of Object Oriented and Agile Design (video)](https://www.youtube.com/watch?v=TMuno5RZNeE)
-        - [ ] [SOLID Principles (video)](https://www.youtube.com/playlist?list=PL4CE9F710017EA77A)
-        - [ ] S - [Single Responsibility Principle](http://www.oodesign.com/single-responsibility-principle.html) | [Single responsibility to each Object](http://www.javacodegeeks.com/2011/11/solid-single-responsibility-principle.html)
-            - [more flavor](https://docs.google.com/open?id=0ByOwmqah_nuGNHEtcU5OekdDMkk)
-        - [ ] O - [Open/Closed Principal](http://www.oodesign.com/open-close-principle.html)  | [On production level Objects are ready for extension but not for modification](https://en.wikipedia.org/wiki/Open/closed_principle)
-            - [more flavor](http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgN2M5MTkwM2EtNWFkZC00ZTI3LWFjZTUtNTFhZGZiYmUzODc1&hl=en)
-        - [ ] L - [Liskov Substitution Principal](http://www.oodesign.com/liskov-s-substitution-principle.html) | [Base Class and Derived class follow ‘IS A’ principal](http://stackoverflow.com/questions/56860/what-is-the-liskov-substitution-principle)
-            - [more flavor](http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgNzAzZjA5ZmItNjU3NS00MzQ5LTkwYjMtMDJhNDU5ZTM0MTlh&hl=en)
-        - [ ] I - [Interface segregation principle](http://www.oodesign.com/interface-segregation-principle.html) | clients should not be forced to implement interfaces they don't use
-            - [Interface Segregation Principle in 5 minutes (video)](https://www.youtube.com/watch?v=3CtAfl7aXAQ)
-            - [more flavor](http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi&hl=en)
-        - [ ] D -[Dependency Inversion principle](http://www.oodesign.com/dependency-inversion-principle.html) | Reduce the dependency In composition of objects.
-            - [Why Is The Dependency Inversion Principle And Why Is It Important](http://stackoverflow.com/questions/62539/what-is-the-dependency-inversion-principle-and-why-is-it-important)
-            - [more flavor](http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgMjdlMWIzNGUtZTQ0NC00ZjQ5LTkwYzQtZjRhMDRlNTQ3ZGMz&hl=en)
+    - Identify overlapping subproblems and optimal substructure
+    - Top-down (memoization) vs bottom-up (tabulation)
+    - Classic patterns: knapsack, LCS, LIS, edit distance, interval DP, tree DP
+    - [Dynamic Programming – From Novice to Advanced (TopCoder)](https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/)
 
-- ### Design patterns
-    - [ ] [Quick UML review (video)](https://www.youtube.com/watch?v=3cmzqZzwNDM&list=PLGLfVvz_LVvQ5G-LdJ8RLqe-ndo7QITYc&index=3)
-    - [ ] Learn these patterns:
-        - [ ] strategy
-        - [ ] singleton
-        - [ ] adapter
-        - [ ] prototype
-        - [ ] decorator
-        - [ ] visitor
-        - [ ] factory, abstract factory
-        - [ ] facade
-        - [ ] observer
-        - [ ] proxy
-        - [ ] delegate
-        - [ ] command
-        - [ ] state
-        - [ ] memento
-        - [ ] iterator
-        - [ ] composite
-        - [ ] flyweight
-    - [ ] [Chapter 6 (Part 1) - Patterns (video)](https://youtu.be/LAP2A80Ajrg?list=PLJ9pm_Rc9HesnkwKlal_buSIHA-jTZMpO&t=3344)
-    - [ ] [Chapter 6 (Part 2) - Abstraction-Occurrence, General Hierarchy, Player-Role, Singleton, Observer, Delegation (video)](https://www.youtube.com/watch?v=U8-PGsjvZc4&index=12&list=PLJ9pm_Rc9HesnkwKlal_buSIHA-jTZMpO)
-    - [ ] [Chapter 6 (Part 3) - Adapter, Facade, Immutable, Read-Only Interface, Proxy (video)](https://www.youtube.com/watch?v=7sduBHuex4c&index=13&list=PLJ9pm_Rc9HesnkwKlal_buSIHA-jTZMpO)
-    - [ ] [Series of videos (27 videos)](https://www.youtube.com/playlist?list=PLF206E906175C7E07)
-    - [ ] [Head First Design Patterns](https://www.amazon.com/Head-First-Design-Patterns-Freeman/dp/0596007124)
-        - I know the canonical book is "Design Patterns: Elements of Reusable Object-Oriented Software", but Head First is great for beginners to OO.
-    - [ ] [Handy reference: 101 Design Patterns & Tips for Developers](https://sourcemaking.com/design-patterns-and-tips)
-    - [ ] [Design patterns for humans](https://github.com/kamranahmedse/design-patterns-for-humans#structural-design-patterns)
+- ### Design Patterns
+    - [ ] Strategy, Observer, Factory/Abstract Factory, Builder, Decorator, Proxy, Adapter, Facade, Command, Iterator, Composite, Flyweight, Memento, State, Visitor, Singleton (and why to avoid it)
+    - [Design patterns for humans](https://github.com/kamranahmedse/design-patterns-for-humans)
+    - [Handy reference: 101 Design Patterns & Tips](https://sourcemaking.com/design-patterns-and-tips)
 
+- ### SOLID Principles
+    - [ ] [Bob Martin SOLID Principles (video)](https://www.youtube.com/watch?v=TMuno5RZNeE)
+    - S — Single Responsibility, O — Open/Closed, L — Liskov Substitution, I — Interface Segregation, D — Dependency Inversion
 
-
-
-- ### Caches
-    - [ ] LRU cache:
-        - [ ] [The Magic of LRU Cache (100 Days of Google Dev) (video)](https://www.youtube.com/watch?v=R5ON3iwx78M)
-        - [ ] [Implementing LRU (video)](https://www.youtube.com/watch?v=bq6N7Ym81iI)
-        - [ ] [LeetCode - 146 LRU Cache (C++) (video)](https://www.youtube.com/watch?v=8-FZRAjR7qU)
-    - [ ] CPU cache:
-        - [ ] [MIT 6.004 L15: The Memory Hierarchy (video)](https://www.youtube.com/watch?v=vjYF_fAZI5E&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-&index=24)
-        - [ ] [MIT 6.004 L16: Cache Issues (video)](https://www.youtube.com/watch?v=ajgC3-pyGlk&index=25&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-)
-
-- ### Processes and Threads
-    - [ ] Computer Science 162 - Operating Systems (25 videos):
-        - for processes and threads see videos 1-11
-        - [Operating Systems and System Programming (video)](https://archive.org/details/ucberkeley-webcast-PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c)
-    - [What Is The Difference Between A Process And A Thread?](https://www.quora.com/What-is-the-difference-between-a-process-and-a-thread)
-    - Covers:
-        - Processes, Threads, Concurrency issues
-            - difference between processes and threads
-            - processes
-            - threads
-            - locks
-            - mutexes
-            - semaphores
-            - monitors
-            - how they work
-            - deadlock
-            - livelock
-        - CPU activity, interrupts, context switching
-        - Modern concurrency constructs with multicore processors
-        - [Paging, segmentation and virtual memory (video)](https://www.youtube.com/watch?v=LKe7xK0bF7o&list=PLCiOXwirraUCBE9i_ukL8_Kfg6XNv7Se8&index=2)
-        - [Interrupts (video)](https://www.youtube.com/watch?v=uFKi2-J-6II&list=PLCiOXwirraUCBE9i_ukL8_Kfg6XNv7Se8&index=3)
-        - [Scheduling (video)](https://www.youtube.com/watch?v=-Gu5mYdKbu4&index=4&list=PLCiOXwirraUCBE9i_ukL8_Kfg6XNv7Se8)
-        - Process resource needs (memory: code, static storage, stack, heap, and also file descriptors, i/o)
-        - Thread resource needs (shares above (minus stack) with other threads in the same process but each has its own pc, stack counter, registers, and stack)
-        - Forking is really copy on write (read-only) until the new process writes to memory, then it does a full copy.
-        - Context switching
-            - How context switching is initiated by the operating system and underlying hardware
-    - [ ] [threads in C++ (series - 10 videos)](https://www.youtube.com/playlist?list=PL5jc9xFGsL8E12so1wlMS0r0hTQoJL74M)
-    - [ ] concurrency in Python (videos):
-        - [ ] [Short series on threads](https://www.youtube.com/playlist?list=PL1H1sBF1VAKVMONJWJkmUh6_p8g4F2oy1)
-        - [ ] [Python Threads](https://www.youtube.com/watch?v=Bs7vPNbB9JM)
-        - [ ] [Understanding the Python GIL (2010)](https://www.youtube.com/watch?v=Obt-vMVdM8s)
-            - [reference](http://www.dabeaz.com/GIL)
-        - [ ] [David Beazley - Python Concurrency From the Ground Up: LIVE! - PyCon 2015](https://www.youtube.com/watch?v=MCs5OvhV9S4)
-        - [ ] [Keynote David Beazley - Topics of Interest (Python Asyncio)](https://www.youtube.com/watch?v=ZzfHjytDceU)
-        - [ ] [Mutex in Python](https://www.youtube.com/watch?v=0zaPs8OtyKY)
-
-- ### Testing
-    - To cover:
-        - how unit testing works
-        - what are mock objects
-        - what is integration testing
-        - what is dependency injection
-    - [ ] [Agile Software Testing with James Bach (video)](https://www.youtube.com/watch?v=SAhJf36_u5U)
-    - [ ] [Open Lecture by James Bach on Software Testing (video)](https://www.youtube.com/watch?v=ILkT_HV9DVU)
-    - [ ] [Steve Freeman - Test-Driven Development (that’s not what we meant) (video)](https://vimeo.com/83960706)
-        - [slides](http://gotocon.com/dl/goto-berlin-2013/slides/SteveFreeman_TestDrivenDevelopmentThatsNotWhatWeMeant.pdf)
-    - [ ] [TDD is dead. Long live testing.](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html)
-    - [ ] [Is TDD dead? (video)](https://www.youtube.com/watch?v=z9quxZsLcfo)
-    - [ ] [Video series (152 videos) - not all are needed (video)](https://www.youtube.com/watch?v=nzJapzxH_rE&list=PLAwxTw4SYaPkWVHeC_8aSIbSxE_NXI76g)
-    - [ ] [Test-Driven Web Development with Python](http://www.obeythetestinggoat.com/pages/book.html#toc)
-    - [ ] Dependency injection:
-        - [ ] [video](https://www.youtube.com/watch?v=IKD2-MAkXyQ)
-        - [ ] [Tao Of Testing](http://jasonpolites.github.io/tao-of-testing/ch3-1.1.html)
-    - [ ] [How to write tests](http://jasonpolites.github.io/tao-of-testing/ch4-1.1.html)
-
-
-
-- ### String searching & manipulations
-    - [ ] [Sedgewick - Suffix Arrays (video)](https://www.youtube.com/watch?v=HKPrVm5FWvg)
-    - [ ] [Sedgewick - Substring Search (videos)](https://www.youtube.com/watch?v=2LvvVFCEIv8&list=PLe-ggMe31CTdAdjXB3lIuf2maubzo9t66&index=5)
-        - [ ] [1. Introduction to Substring Search](https://www.youtube.com/watch?v=2LvvVFCEIv8&list=PLe-ggMe31CTdAdjXB3lIuf2maubzo9t66&index=5)
-        - [ ] [2. Brute-Force Substring Search](https://www.youtube.com/watch?v=CcDXwIGEXYU&list=PLe-ggMe31CTdAdjXB3lIuf2maubzo9t66&index=4)
-        - [ ] [3. Knuth-Morris Pratt](https://www.youtube.com/watch?v=n-7n-FDEWzc&index=3&list=PLe-ggMe31CTdAdjXB3lIuf2maubzo9t66)
-        - [ ] [4. Boyer-Moore](https://www.youtube.com/watch?v=fI7Ch6pZXfM&list=PLe-ggMe31CTdAdjXB3lIuf2maubzo9t66&index=2)
-        - [ ] [5. Rabin-Karp](https://www.youtube.com/watch?v=QzI0p6zDjK4&index=1&list=PLe-ggMe31CTdAdjXB3lIuf2maubzo9t66)
-    - [ ] [Search pattern in text (video)](https://www.coursera.org/learn/data-structures/lecture/tAfHI/search-pattern-in-text)
-
-    If you need more detail on this subject, see "String Matching" section in [Additional Detail on Some Subjects](#additional-detail-on-some-subjects)
-
-- ### Floating Point Numbers
-    - [ ] simple 8-bit: [Representation of Floating Point Numbers - 1 (video - there is an error in calculations - see video description)](https://www.youtube.com/watch?v=ji3SfClm8TU)
-    - [ ] 32 bit: [IEEE754 32-bit floating point binary (video)](https://www.youtube.com/watch?v=50ZYcZebIec)
-
-- ### Unicode
-    - [ ] [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets]( http://www.joelonsoftware.com/articles/Unicode.html)
-    - [ ] [What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text](http://kunststube.net/encoding/)
+- ### Concurrency and Distributed Primitives
+    - Threads vs processes, locks, mutexes, semaphores, monitors
+    - Deadlock, livelock, starvation — detection and prevention
+    - Memory models, happens-before, volatile, compare-and-swap
+    - Java: `synchronized`, `ReentrantLock`, `CompletableFuture`, `ForkJoinPool`, virtual threads (JDK 21+)
+    - [Computer Science 162 - Operating Systems (videos)](https://archive.org/details/ucberkeley-webcast-PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c)
 
 - ### Networking
-    - **if you have networking experience or want to be a reliability engineer or operations engineer, expect questions**
-    - otherwise, this is just good to know
-    - [ ] [Khan Academy](https://www.khanacademy.org/computing/computer-science/internet-intro)
-    - [ ] [UDP and TCP: Comparison of Transport Protocols](https://www.youtube.com/watch?v=Vdc8TCESIg8)
-    - [ ] [TCP/IP and the OSI Model Explained!](https://www.youtube.com/watch?v=e5DEVa9eSN0)
-    - [ ] [Packet Transmission across the Internet. Networking & TCP/IP tutorial.](https://www.youtube.com/watch?v=nomyRJehhnM)
-    - [ ] [HTTP](https://www.youtube.com/watch?v=WGJrLqtX7As)
-    - [ ] [SSL and HTTPS](https://www.youtube.com/watch?v=S2iBR2ZlZf0)
-    - [ ] [SSL/TLS](https://www.youtube.com/watch?v=Rp3iZUvXWlM)
-    - [ ] [HTTP 2.0](https://www.youtube.com/watch?v=E9FxNzv1Tr8)
-    - [ ] [Video Series (21 videos)](https://www.youtube.com/playlist?list=PLEbnTDJUr_IegfoqO4iPnPYQui46QqT0j)
-    - [ ] [Subnetting Demystified - Part 5 CIDR Notation](https://www.youtube.com/watch?v=t5xYI0jzOf4)
-    - [ ] Sockets:
-        - [ ] [Java - Sockets - Introduction (video)](https://www.youtube.com/watch?v=6G_W54zuadg&t=6s)
-        - [ ] [Socket Programming (video)](https://www.youtube.com/watch?v=G75vN2mnJeQ)
+    - TCP vs UDP, TLS handshake, HTTP/1.1 vs HTTP/2 vs HTTP/3
+    - Load balancers (L4 vs L7), CDNs, DNS resolution
+    - REST vs gRPC vs GraphQL — trade-offs, not just definitions
+    - WebSockets, SSE, long-polling — when to use which
+
+- ### Caches
+    - LRU, LFU, TTL-based eviction — implementation and trade-offs
+    - Cache-aside vs write-through vs write-behind vs refresh-ahead
+    - CPU cache hierarchy, cache lines, false sharing
+    - Distributed caches: Redis, Memcached — consistency models
 
 
-## Final Review
+## System Design Learning Path
 
-    This section will have shorter videos that you can watch pretty quickly to review most of the important concepts.
-    It's nice if you want a refresher often.
+> Goal: design systems that are scalable, reliable, and maintainable — and be able to reason about trade-offs clearly under interview pressure and in real production contexts.
 
-- [ ] Series of 2-3 minutes short subject videos (23 videos)
-    - [Videos](https://www.youtube.com/watch?v=r4r1DZcx1cM&list=PLmVb1OknmNJuC5POdcDv5oCS7_OUkDgpj&index=22)
-- [ ] Series of 2-5 minutes short subject videos - Michael Sambol (18 videos):
-    - [Videos](https://www.youtube.com/channel/UCzDJwLWoYCUQowF_nG3m5OQ)
-- [ ] [Sedgewick Videos - Algorithms I](https://www.youtube.com/user/algorithmscourses/playlists?shelf_id=2&view=50&sort=dd)
-    - [ ] [02. Analysis of Algorithms](https://www.youtube.com/watch?v=ZN-nFW0mEpg&list=PLe-ggMe31CTf0_bkOhh7sa5uqeppp3Sr0)
-    - [ ] [03. Stacks and Queues](https://www.youtube.com/watch?v=TIC1gappbP8&list=PLe-ggMe31CTe-9jhnj3P_3mmrCh0A7iHh)
-    - [ ] [04. Elementary Sorts](https://www.youtube.com/watch?v=CD2AL6VO0ak&list=PLe-ggMe31CTe_5WhGV0F--7CK8MoRUqBd)
-    - [ ] [05. Mergesort](https://www.youtube.com/watch?v=4nKwesx_c8E&list=PLe-ggMe31CTeunC6GZHFBmQx7EKtjbGf9)
-    - [ ] [06. Quicksort](https://www.youtube.com/watch?v=5M5A7qPWk84&list=PLe-ggMe31CTeE3x2-nF1-toca1QpuXwE1)
-    - [ ] [07. Priority Queues](https://www.youtube.com/watch?v=G9TMe0KC0w0&list=PLe-ggMe31CTducy9LDiGVkdSv0NfiRwn5)
-    - [ ] [09. Balanced Search Trees](https://www.youtube.com/watch?v=qC1BLLPK_5w&list=PLe-ggMe31CTf7jHH_mFT50kayjCEA6Rhu)
-    - [ ] [11. Hash Tables](https://www.youtube.com/watch?v=QA8fJGO-i9o&list=PLe-ggMe31CTcKxIRGqqThMts2eHtSrf11)
-    
-## Coding Question Practice
+### Foundations to Nail First
+- [ ] **Scalability primitives**: vertical vs horizontal scaling, stateless vs stateful services, shared-nothing architecture
+- [ ] **CAP theorem**: consistency vs availability under partition — know which side your system sits on and why
+- [ ] **Latency vs throughput**: P50/P99/P999, Little's Law, queueing theory basics
+- [ ] **Back-of-envelope math**: RPS estimates, storage sizing, bandwidth, cache hit rate impact
+    - Practice: 1M DAU, 10 reads/user/day, avg 1KB → ~116 MB/s read throughput
+- [ ] **Fallacies of distributed computing**: network is reliable, latency is zero, bandwidth is infinite — burn these in
 
-Now that you know all the computer science topics above, it's time to practice answering coding problems.
+### Networking and APIs
+- [ ] DNS, load balancers (L4 vs L7), reverse proxies, CDNs — how a request travels end-to-end
+- [ ] REST vs gRPC vs GraphQL: when to use each, schema evolution, versioning strategies
+- [ ] API design: idempotency keys, pagination (cursor vs offset), rate limiting (token bucket, sliding window)
+- [ ] Long-polling, WebSockets, SSE, webhooks — trade-offs for real-time delivery
+- [ ] Circuit breakers (Hystrix/Resilience4j), retries with exponential backoff + jitter, timeouts, bulkheads
 
-**Coding question practice is not about memorizing answers to programming problems.**
+### Databases (Deep)
+- [ ] **SQL internals**: B-Tree indexes, LSM trees (RocksDB), MVCC, WAL, vacuum/compaction
+- [ ] **Indexing**: composite indexes, covering indexes, partial indexes, index-only scans, write amplification cost
+- [ ] **Replication**: single-leader, multi-leader, leaderless (Dynamo-style), replication lag, read-your-writes
+- [ ] **Sharding**: range vs hash vs directory-based, cross-shard queries, resharding (consistent hashing)
+- [ ] **NoSQL trade-offs**:
+    - Wide-column (Cassandra, HBase): write-heavy, time-series, partitioning model
+    - Document (MongoDB): flexible schema, $lookup cost, aggregation pipeline
+    - Key-value (Redis, DynamoDB): hot key problem, TTL, item size limits
+    - Graph (Neo4j, Neptune): when relationships are first-class
+- [ ] **NewSQL** (CockroachDB, Spanner): distributed transactions, external consistency, TrueTime
+- [ ] **Connection pooling**: PgBouncer, HikariCP, N+1 queries, connection limits at scale
 
-Why you need to practice doing programming problems:
-- problem recognition, and where the right data structures and algorithms fit in
-- gathering requirements for the problem
-- talking your way through the problem like you will in the interview
-- coding on a whiteboard or paper, not a computer
-- coming up with time and space complexity for your solutions
-- testing your solutions
+### Caching Strategies
+- [ ] Cache-aside (lazy loading) vs write-through vs write-behind vs refresh-ahead
+- [ ] Eviction policies: LRU, LFU, FIFO, TTL — choosing based on access patterns
+- [ ] Cache stampede / thundering herd: probabilistic early expiration, distributed locks, request coalescing
+- [ ] Multi-level caching: L1 (in-process) → L2 (Redis) → L3 (CDN edge) → origin
+- [ ] Cache consistency: invalidation vs TTL-based, write-through with versioned keys, pub/sub invalidation
+- [ ] Redis deep dive: data structures (sorted sets, streams, hyperloglogs), Lua scripting, Redis Cluster vs Sentinel
 
+### Message Queues and Event-Driven Systems
+- [ ] **Kafka architecture**: brokers, topics, partitions, consumer groups, offsets, ISR, leader election
+    - [ ] Producer: acks, batching, compression, idempotent producer
+    - [ ] Consumer: at-most-once vs at-least-once vs exactly-once, rebalancing, lag monitoring
+    - [ ] Log compaction, retention policies, partition key design
+- [ ] **When to use queues**: decoupling, load leveling, fan-out, ordering guarantees
+- [ ] **Competing consumers vs pub/sub**: SQS vs SNS vs Kafka — trade-offs
+- [ ] **Outbox pattern**: transactional writes + event publishing without 2PC
+- [ ] **Saga pattern**: choreography vs orchestration, compensating transactions
+- [ ] **Event sourcing vs CQRS**: when it helps and the operational cost it adds
 
-Supplemental:
+### Distributed Systems Concepts
+- [ ] **Consistency models**: linearizability, sequential consistency, causal consistency, eventual consistency
+- [ ] **Consensus**: Raft (leader election, log replication), Paxos (conceptual), ZooKeeper (ZAB)
+- [ ] **Distributed transactions**: 2PC (blocking), 3PC, Saga, TCC — why 2PC is rare in practice
+- [ ] **Clock synchronization**: physical vs logical clocks (Lamport), vector clocks, hybrid logical clocks
+- [ ] **Failure detection**: heartbeats, gossip protocol, phi-accrual failure detector (Cassandra)
+- [ ] **Service discovery**: client-side (Eureka) vs server-side (ELB), DNS-based, Consul/etcd
 
-- [Mathematics for Topcoders](https://www.topcoder.com/community/data-science/data-science-tutorials/mathematics-for-topcoders/)
-- [Dynamic Programming – From Novice to Advanced](https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/)
-- [MIT Interview Materials](https://web.archive.org/web/20160906124824/http://courses.csail.mit.edu/iap/interview/materials.php)
-- [Exercises for getting better at a given language](https://exercism.org/tracks)
+### High Availability and Reliability
+- [ ] **Availability math**: 99.9% = 8.7h/year downtime, 99.99% = 52m/year — know the table cold
+- [ ] **SLOs, SLAs, error budgets**: defining SLIs, alerting on burn rate, error budget policy
+- [ ] **Graceful degradation**: feature flags, circuit breakers, shadow traffic, fallback responses
+- [ ] **Disaster recovery**: RPO vs RTO, active-active vs active-passive, multi-region strategies
+- [ ] **Chaos engineering**: fault injection, game days, Chaos Monkey principles
 
-**Read and Do Programming Problems (in this order):**
+### Observability and Operations
+- [ ] **Three pillars**: logs (structured JSON), metrics (counters/histograms/gauges), traces (distributed)
+- [ ] **OpenTelemetry**: instrumentation, trace context propagation, OTLP exporters
+- [ ] **Metrics systems**: Prometheus + Grafana, Datadog, CloudWatch — USE method (utilization, saturation, errors)
+- [ ] **Log aggregation**: Elasticsearch + Kibana, Loki, Splunk — structured querying at scale
+- [ ] **Distributed tracing**: Jaeger, Zipkin, trace sampling strategies, tail-based sampling
+- [ ] **On-call practices**: runbooks, blameless post-mortems, toil reduction, SLO-based alerting
 
-- [ ] [Programming Interviews Exposed: Secrets to Landing Your Next Job, 2nd Edition](http://www.wiley.com/WileyCDA/WileyTitle/productCd-047012167X.html)
-    - answers in C, C++ and Java
-- [ ] [Cracking the Coding Interview, 6th Edition](http://www.amazon.com/Cracking-Coding-Interview-6th-Programming/dp/0984782850/)
-    - answers in Java
+### Microservices and Service Mesh
+- [ ] **Service decomposition**: domain-driven design, bounded contexts, strangler fig pattern
+- [ ] **Communication patterns**: sync (REST/gRPC) vs async (Kafka/SQS), choreography vs orchestration
+- [ ] **API gateway**: auth, rate limiting, request routing, response aggregation
+- [ ] **Service mesh**: Istio/Linkerd — mTLS, traffic management, observability without code changes
+- [ ] **Container orchestration**: Kubernetes — deployments, services, ingress, HPA, resource limits, probes
 
-See [Book List above](#book-list)
+### Common System Design Problems to Practice
 
-## Coding exercises/challenges
+| System | Key Challenges |
+|---|---|
+| URL Shortener | Hash collision, redirect performance, analytics |
+| Rate Limiter | Token bucket vs sliding window, distributed state |
+| Distributed Cache | Consistent hashing, eviction, replication |
+| News Feed / Timeline | Fan-out on write vs read, storage at scale |
+| Search Autocomplete | Trie vs inverted index, ranking, latency |
+| Notification System | Fan-out, delivery guarantees, mobile push |
+| Distributed Message Queue | Ordering, at-least-once, offset management |
+| Ride-Sharing (Uber/Lyft) | Geo-indexing (geohash/quadtree), matching, surge |
+| Video Streaming (YouTube) | CDN, encoding pipeline, adaptive bitrate |
+| Payments / Ledger | Idempotency, double-spend prevention, auditability |
+| Web Crawler | Politeness, de-duplication, distributed coordination |
+| LLM Inference Service | GPU batching, KV cache, autoscaling, cost |
 
-Once you've learned your brains out, put those brains to work.
-Take coding challenges every day, as many as you can.
-
-- [ ] [How to Find a Solution](https://www.topcoder.com/community/data-science/data-science-tutorials/how-to-find-a-solution/)
-- [ ] [How to Dissect a Topcoder Problem Statement](https://www.topcoder.com/community/data-science/data-science-tutorials/how-to-dissect-a-topcoder-problem-statement/)
-
-Coding Interview Question Videos:
-- [IDeserve (88 videos)](https://www.youtube.com/watch?v=NBcqBddFbZw&list=PLamzFoFxwoNjPfxzaWqs7cZGsPYy0x_gI)
-- [Tushar Roy (5 playlists)](https://www.youtube.com/user/tusharroy2525/playlists?shelf_id=2&view=50&sort=dd)
-
-
-
-Challenge repos:
-- [Interactive Coding Interview Challenges in Python](https://github.com/donnemartin/interactive-coding-challenges)
-
-
-## Once you're closer to the interview
-
-- [ ] Cracking The Coding Interview Set 2 (videos):
-    - [Cracking The Code Interview](https://www.youtube.com/watch?v=4NIb9l3imAo)
-    - [Cracking the Coding Interview - Fullstack Speaker Series](https://www.youtube.com/watch?v=Eg5-tdAwclo)
-
-## AI / Machine Learning / LLM Interview Topics
-
-- **Foundations**
-    - [ ] Supervised vs unsupervised vs reinforcement learning
-    - [ ] Bias/variance tradeoff, overfitting/underfitting, regularization, cross‑validation
-    - [ ] Core metrics: accuracy, precision/recall, F1, ROC‑AUC, logloss, regression metrics (MSE/MAE/R²)
-
-- **Classical ML and Feature Engineering**
-    - [ ] Linear/logistic regression, decision trees, random forests, gradient boosting (XGBoost/LightGBM)
-    - [ ] Feature scaling, encoding, feature selection, leakage and data splitting strategy
-
-- **Deep Learning and NLP**
-    - [ ] Basics of neural networks, CNNs vs RNNs vs Transformers
-    - [ ] Word embeddings, attention, sequence‑to‑sequence models
-
-- **LLMs and Generative AI**
-    - [ ] How transformers work at a high level (self‑attention, positional encoding)
-    - [ ] Prompt design, few‑shot vs fine‑tuning, retrieval‑augmented generation (RAG)
-    - [ ] Safety, hallucinations, evaluation of LLM systems (automatic vs human evaluation)
-
-- **ML/AI System Design**
-    - [ ] Design an end‑to‑end recommendation/search/forecasting/LLM‑based system
-    - [ ] Online vs offline inference, latency/throughput/SLOs, A/B testing and experiment design
-    - [ ] Monitoring drift, data quality, model performance in production
-
-- **MLOps / Platforms**
-    - [ ] Feature stores, model registry, CI/CD for models
-    - [ ] Data versioning, reproducibility, lineage, governance
-
-
-## Topics for 5+ Years of Experience
-
-- **System Design and Architecture**
-    - [ ] Design scalable, highly available, observable services (APIs, event‑driven systems, batch pipelines)
-    - [ ] Trade‑offs: monolith vs microservices, REST vs gRPC, sync vs async, SQL vs NoSQL
-    - [ ] Caching, database indexing/partitioning, message queues, backpressure, rate limiting
-
-- **Ownership and Execution**
-    - [ ] Leading projects end‑to‑end: requirements, design docs, breaking work into milestones
-    - [ ] Handling ambiguity, de‑risking, communicating trade‑offs with PMs and stakeholders
-
-- **Code Quality and Reliability**
-    - [ ] Designing clean interfaces, enforcing invariants, refactoring legacy code
-    - [ ] Testing strategy at scale (unit, integration, contract, load tests)
-    - [ ] Observability: logs, metrics, traces, SLOs/error budgets, on‑call practices
-
-- **Leadership and Collaboration**
-    - [ ] Mentoring juniors, doing effective code reviews
-    - [ ] Driving cross‑team initiatives, aligning on standards and best practices
+### Books and Resources
+- [ ] **Designing Data-Intensive Applications** — Martin Kleppmann (essential — read cover to cover)
+- [ ] **System Design Interview Vol 1 & 2** — Alex Xu (breadth and practice)
+- [ ] **Building Microservices** — Sam Newman
+- [ ] **The Site Reliability Engineering Book** — Google SRE (free online)
+- [ ] [High Scalability Blog](http://highscalability.com/) — real architecture teardowns
+- [ ] [Grokking the System Design Interview](https://www.educative.io/courses/grokking-the-system-design-interview)
+- [ ] [ByteByteGo Newsletter / YouTube](https://blog.bytebytego.com/) — visual system design explainers
 
 
-## Data Engineering (Spark / Scala / Batch Jobs)
+## Topics for 7 Years of Experience
 
-- **Data Modeling and Warehousing**
-    - [ ] OLTP vs OLAP, star vs snowflake schema, dimensional modeling
-    - [ ] Partitioning, bucketing, file formats (Parquet/ORC/Avro), lakehouse vs warehouse concepts
+- **Technical Leadership**
+    - [ ] Leading projects end-to-end: requirements, design docs, breaking work into milestones, de-risking
+    - [ ] Writing RFCs / design docs that drive alignment, not just document decisions
+    - [ ] Communicating trade-offs clearly to PMs, stakeholders, and non-technical leadership
+    - [ ] Setting technical direction: when to pay down debt, when to greenfield, when to buy vs build
 
-- **Spark and Scala Fundamentals**
-    - [ ] Spark core concepts: RDD vs DataFrame/Dataset, transformations vs actions, lazy evaluation
-    - [ ] Spark execution model: jobs, stages, tasks, shuffles, wide vs narrow dependencies
-    - [ ] Writing idiomatic Scala for data pipelines (immutability, collections, functional patterns)
+- **Code Quality and Reliability at Scale**
+    - [ ] Designing clean interfaces, enforcing invariants, making wrong states unrepresentable
+    - [ ] Testing strategy at scale: unit, integration, contract (Pact), load, chaos
+    - [ ] Observability: structured logging, distributed tracing (OpenTelemetry), metrics, SLOs/error budgets
+    - [ ] On-call practices: runbooks, post-mortems, reducing toil
 
-- **Performance and Reliability**
-    - [ ] Joins and skew handling, partition sizing, broadcast joins, caching strategies
-    - [ ] Memory management, shuffle tuning, avoiding small files, optimizing read/write patterns
-
-- **Batch and Streaming Pipelines**
-    - [ ] Designing robust ETL/ELT pipelines: ingestion, transformation, enrichment, publishing
-    - [ ] Batch vs streaming vs micro‑batch (Spark Structured Streaming, Kafka, etc. – high‑level concepts)
-    - [ ] Idempotency, exactly‑once semantics (conceptual), late/duplicate data handling
-
-- **Orchestration and Operations**
-    - [ ] Job scheduling/orchestration (Cron, Airflow, Dagster, etc. – high‑level)
-    - [ ] Data quality checks, SLAs/SLOs for pipelines, lineage and governance
-
-## Your Resume
-
-- See Resume prep items in Cracking The Coding Interview and back of Programming Interviews Exposed
+- **Engineering Effectiveness**
+    - [ ] Mentoring engineers at all levels; raising the bar through code reviews
+    - [ ] Driving cross-team initiatives, aligning on standards, deprecating old systems safely
+    - [ ] Knowing when NOT to build — saying no and what you gain from it
 
 
-## Be thinking of for when the interview comes
+## AI / Machine Learning Learning Path
 
-Think of about 20 interview questions you'll get, along with the lines of the items below. Have 2-3 answers for each.
-Have a story, not just data, about something you accomplished.
+> Goal: enough depth to build AI-powered systems, lead ML platform decisions, and contribute to AI product strategy.
 
-- Why do you want this job?
-- What's a tough problem you've solved?
-- Biggest challenges faced?
-- Best/worst designs seen?
-- Ideas for improving an existing product.
-- How do you work best, as an individual and as part of a team?
-- Which of your skills or experiences would be assets in the role and why?
-- What did you most enjoy at [job x / project y]?
-- What was the biggest challenge you faced at [job x / project y]?
-- What was the hardest bug you faced at [job x / project y]?
-- What did you learn at [job x / project y]?
-- What would you have done better at [job x / project y]?
+### Mathematics Foundations
+- [ ] **Linear Algebra**: vectors, matrices, eigendecomposition, SVD — [3Blue1Brown Essence of Linear Algebra](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+- [ ] **Probability & Statistics**: Bayes' theorem, distributions, MLE, information theory (entropy, KL divergence)
+- [ ] **Optimization**: gradient descent variants (SGD, Adam, AdamW), learning rate schedules, convexity
 
-## Have questions for the interviewer
+### Classical ML — Depth Over Breadth
+- [ ] Linear/logistic regression (derive the gradient, understand regularization L1/L2)
+- [ ] Decision trees, random forests, gradient boosting — XGBoost, LightGBM internals
+- [ ] SVMs, k-means, PCA, UMAP — when and why
+- [ ] Feature engineering, encoding, leakage, data splitting strategy, class imbalance handling
+- [ ] Bias/variance tradeoff, cross-validation, hyperparameter tuning (Bayesian optimization)
+- [ ] [fast.ai ML course](https://course.fast.ai/)
 
-    Some of mine (I already may know answer to but want their opinion or team perspective):
+### Deep Learning
+- [ ] Neural network fundamentals: forward/backprop, vanishing gradients, batch norm, dropout
+- [ ] CNNs: convolutions, pooling, ResNet, EfficientNet — use-cases in vision
+- [ ] RNNs, LSTMs, GRUs — limitations that led to Transformers
+- [ ] **Transformers**: self-attention, multi-head attention, positional encoding, encoder/decoder variants
+    - [ ] [Attention Is All You Need (paper)](https://arxiv.org/abs/1706.03762)
+    - [ ] [Illustrated Transformer — Jay Alammar](https://jalammar.github.io/illustrated-transformer/)
+- [ ] PyTorch hands-on: training loop, `DataLoader`, custom datasets, mixed precision, `torch.compile`
 
-- How large is your team?
-- What does your dev cycle look like? Do you do waterfall/sprints/agile?
-- Are rushes to deadlines common? Or is there flexibility?
-- How are decisions made in your team?
-- How many meetings do you have per week?
-- Do you feel your work environment helps you concentrate?
-- What are you working on?
-- What do you like about it?
-- What is the work life like?
+### LLMs and Generative AI
+- [ ] **Pre-training**: next-token prediction, masked LM, data curation and tokenization (BPE, SentencePiece)
+- [ ] **Fine-tuning strategies**: full fine-tuning, LoRA, QLoRA, PEFT — trade-offs in cost vs quality
+- [ ] **RLHF / RLAIF**: reward modeling, PPO, DPO — how alignment is trained
+- [ ] **Inference optimization**: quantization (GPTQ, AWQ), KV cache, speculative decoding, vLLM, tensor parallelism
+- [ ] **Prompt engineering**: zero-shot, few-shot, chain-of-thought, structured outputs (JSON mode, tool use)
+- [ ] **RAG (Retrieval-Augmented Generation)**:
+    - [ ] Chunking strategies, embedding models, vector databases (Pinecone, Weaviate, pgvector)
+    - [ ] Hybrid search (dense + sparse), reranking (cross-encoders), context window management
+    - [ ] Agentic RAG: query rewriting, multi-hop retrieval
+- [ ] **Agents and Tool Use**: ReAct pattern, function calling, MCP (Model Context Protocol), multi-agent orchestration
+- [ ] **Evaluation**: BLEU/ROUGE (limitations), LLM-as-judge, RAGAS, human eval, red-teaming
+- [ ] **Safety and alignment**: hallucinations, jailbreaks, prompt injection, guardrails
+- [ ] [Andrej Karpathy — Let's build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)
+- [ ] [CS224N: NLP with Deep Learning — Stanford](https://web.stanford.edu/class/cs224n/)
+
+### ML System Design
+- [ ] End-to-end recommendation / search / ranking / LLM-based system design
+- [ ] Online vs offline inference, latency/throughput/cost trade-offs, SLOs
+- [ ] Feature stores (Feast, Tecton), model registry, A/B testing and experiment design
+- [ ] Embedding serving at scale, approximate nearest neighbor (FAISS, ScaNN, HNSW)
+- [ ] Monitoring: data drift, concept drift, model degradation, shadow deployment, canary rollouts
+
+### MLOps and Platforms
+- [ ] CI/CD for models: retraining triggers, model validation gates, rollback strategy
+- [ ] Experiment tracking: MLflow, Weights & Biases
+- [ ] Data versioning and lineage (DVC, Delta Lake)
+- [ ] GPU infrastructure: CUDA basics, multi-GPU training (DDP, FSDP), spot instance strategies
+- [ ] [Full Stack LLM Bootcamp](https://fullstackdeeplearning.com/llm-bootcamp/)
+- [ ] [Chip Huyen — Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/)
+
+### Practical Tools to Know
+- [ ] Hugging Face: `transformers`, `datasets`, `peft`, `trl`
+- [ ] LangChain / LlamaIndex — when useful, when to bypass them
+- [ ] OpenAI / Anthropic APIs: streaming, function calling, batching, cost management
+- [ ] Weights & Biases or MLflow for experiment tracking
+- [ ] FAISS / pgvector for local vector search
+
+
+## Apache Spark Learning Path
+
+> Goal: production-grade Spark expertise — write efficient jobs, tune performance, own pipelines end-to-end.
+
+### Spark Architecture Internals
+- [ ] Driver vs executors, DAG scheduler, task scheduler
+- [ ] Jobs, stages, tasks — how an action triggers a DAG
+- [ ] Wide vs narrow dependencies — what causes a shuffle and why it matters
+- [ ] Catalyst optimizer: logical plan → optimized logical plan → physical plan → code generation (Tungsten)
+- [ ] [Spark: The Definitive Guide — Chambers & Zaharia](https://www.oreilly.com/library/view/spark-the-definitive/9781491912201/)
+- [ ] [Databricks Academy — Apache Spark Developer](https://www.databricks.com/learn/training)
+
+### Core APIs
+- [ ] **RDD vs DataFrame vs Dataset**: know when RDD is still the right tool (custom partitioners, low-level control)
+- [ ] DataFrame API: transformations (lazy) vs actions (eager), column expressions, schema evolution
+- [ ] Dataset API (typed): encoder overhead, when to prefer DataFrame
+- [ ] Spark SQL: pushdown predicates, partition pruning, view resolution
+- [ ] UDFs: scalar vs vectorized (Pandas UDFs / Arrow), serialization cost, avoiding them when possible
+
+### Scala for Spark
+- [ ] Immutability, case classes, pattern matching, `Option`/`Either`/`Try`
+- [ ] Higher-order functions: `map`, `flatMap`, `filter`, `fold`, `reduce`
+- [ ] Implicits, type classes — understanding Spark's Encoder derivation
+- [ ] SBT basics, dependency management, fat JAR assembly
+- [ ] [Scala with Cats — Underscore.io (free)](https://underscore.io/books/scala-with-cats/)
+
+### Performance Tuning
+- [ ] **Partitioning**: default parallelism, `repartition` vs `coalesce`, custom partitioners, target partition size (~128–256 MB)
+- [ ] **Shuffle tuning**: `spark.sql.shuffle.partitions` (adaptive with AQE), sort-merge vs broadcast join thresholds
+- [ ] **Data skew**: salting, skew join hints, AQE skew handling, pre-aggregation
+- [ ] **Broadcast joins**: when to force, broadcast variable lifecycle, size limits
+- [ ] **Caching**: `cache()` vs `persist(MEMORY_AND_DISK)`, unpersist discipline, Kryo serialization
+- [ ] **Small files problem**: compaction strategies, `coalesce` at write time, merge operations
+- [ ] **Memory management**: on-heap vs off-heap (Project Tungsten), executor memory breakdown (`spark.memory.fraction`)
+- [ ] **Reading the Spark UI**: timeline view, stage DAG, shuffle read/write bytes, GC time, executor logs
+- [ ] [Spark Performance Tuning — Official Docs](https://spark.apache.org/docs/latest/tuning.html)
+
+### File Formats and Storage
+- [ ] Parquet: columnar storage, row groups, predicate pushdown, dictionary encoding, bloom filters
+- [ ] ORC vs Parquet — when to use which
+- [ ] Avro: schema evolution, Confluent Schema Registry integration
+- [ ] **Delta Lake**: ACID transactions, time travel, `MERGE` (upsert), `OPTIMIZE` + `ZORDER`, `VACUUM`
+- [ ] **Apache Iceberg**: hidden partitioning, partition evolution, snapshot isolation, catalog integration
+- [ ] Lakehouse architecture: medallion (bronze/silver/gold), separating compute from storage (S3/GCS/ADLS)
+
+### Batch Pipeline Design
+- [ ] ETL/ELT patterns: ingestion, deduplication, SCD Type 1/2, enrichment, late data handling
+- [ ] Idempotency: checkpoint-based restarts, overwrite vs append strategies, output deduplication
+- [ ] Data quality: Great Expectations, Deequ, Spark constraints — gate deployments on DQ checks
+- [ ] Metadata management: Hive Metastore, AWS Glue Catalog, Unity Catalog (Databricks)
+- [ ] Pipeline observability: lineage tracking, row count checks, data freshness SLOs
+
+### Structured Streaming
+- [ ] Micro-batch vs continuous processing, trigger types (`Trigger.ProcessingTime`, `Trigger.Once`, `Trigger.AvailableNow`)
+- [ ] Watermarks: late data tolerance, stateful aggregations, stream-stream joins
+- [ ] Checkpointing and recovery: exactly-once semantics (with idempotent sinks)
+- [ ] Kafka source/sink: offsets management, Kafka-Spark offset commit coordination
+- [ ] Delta Lake as a streaming sink: `outputMode("append")` vs `"complete"`, change data feed
+- [ ] [Structured Streaming Programming Guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)
+
+### Orchestration and Operations
+- [ ] Airflow: DAG design, XComs, sensors, dynamic task mapping, backfill strategies
+- [ ] Dagster: asset-based orchestration, partitions, software-defined assets
+- [ ] Kubernetes-native Spark: `spark-on-k8s-operator`, dynamic resource allocation, pod templates
+- [ ] Databricks: clusters (all-purpose vs job), Workflows, Delta Live Tables, Unity Catalog RBAC
+- [ ] Job SLAs: alerting on duration regression, cost tracking per pipeline run
+
+
+## Data Modeling and Warehousing
+
+- [ ] OLTP vs OLAP access patterns — why row vs columnar matters
+- [ ] Star schema vs snowflake vs one-big-table — trade-offs for query performance vs storage
+- [ ] Slowly Changing Dimensions (SCD) Type 1/2/3 — implementation in Spark and Delta
+- [ ] Partitioning strategy: date vs ID vs enum — cardinality, query patterns, compaction cost
+- [ ] Materialized views, pre-aggregation, cube/rollup — reducing query latency at the cost of freshness
+- [ ] dbt: models, tests, snapshots, macros, lineage graph, docs
+
+
+## Interview Coding Practice (Senior Level)
+
+At 7 years, interviews test problem decomposition, complexity reasoning, and communication — not memorization.
+
+**Focus areas:**
+- Graph problems: BFS/DFS, topological sort, shortest path, union-find (connected components)
+- Tree problems: LCA, diameter, path sum, serialization/deserialization
+- Sliding window, two pointers, monotonic stack
+- Heap-based problems: k-largest, merge k sorted lists, median of data stream
+- Interval problems: merge, insert, meeting rooms
+- DP: state machine patterns, interval DP, digit DP
+- Backtracking with pruning
+
+**Practice platforms:**
+- [ ] [LeetCode](https://leetcode.com/) — focus on Medium/Hard, company-tagged sets
+- [ ] [NeetCode 150](https://neetcode.io/practice) — curated list with video explanations
+- [ ] [AlgoExpert](https://www.algoexpert.io/) — good for structured walkthroughs
+
+**Books:**
+- [ ] [Cracking the Coding Interview, 6th Edition](http://www.amazon.com/Cracking-Coding-Interview-6th-Programming/dp/0984782850/) — Java answers, good for concept review
+
+
+## Behavioral and Leadership Questions
+
+Prepare 2–3 stories for each. Use STAR format. Have specifics: scope, impact, numbers.
+
+- Describe a technically complex project you led end-to-end. What was your biggest design decision?
+- Tell me about a time you disagreed with your team/manager on a technical direction. What happened?
+- How have you handled a production incident? What was your role and what did you change afterwards?
+- Describe a time you improved an existing system's reliability, performance, or maintainability.
+- How do you approach mentoring engineers? Give an example where you raised someone's trajectory.
+- Tell me about a time you drove alignment across teams with conflicting priorities.
+- How do you decide when to incur technical debt vs. pay it down?
+- Describe a project where you had to balance speed with correctness/scalability.
+
+## Questions for the Interviewer
+
+- What does the engineering org's on-call culture look like? How are incidents handled?
+- How are technical decisions made — RFC process, ADRs, consensus-driven?
+- What's the ratio of greenfield work vs. maintaining existing systems?
+- How does the team measure engineering effectiveness? SLOs, deployment frequency?
+- What's the biggest technical challenge the team is solving right now?
+- What does the growth path look like from senior to staff/principal?
+- How autonomous are engineers in choosing tools and tech stack?
+- What does a great first 90 days look like in this role?
+
+---
 
 ## Once You've Got The Job
 
-Congratulations!
-
-Keep learning.
+Keep learning — but deliberately. Pick one area per quarter to go deep on, not broad on everything.
 
 You're never really done.
-
----
-
-    *****************************************************************************************************
-    *****************************************************************************************************
-
-    Everything below this point is optional.
-    By studying these, you'll get greater exposure to more CS concepts, and will be better prepared for
-    any software engineering job. You'll be a much more well-rounded software engineer.
-
-    *****************************************************************************************************
-    *****************************************************************************************************
-
----
-
-## Additional Books
-
-- [ ] [The Unix Programming Environment](https://www.amazon.com/dp/013937681X)
-    - an oldie but a goodie
-- [ ] [The Linux Command Line: A Complete Introduction](https://www.amazon.com/dp/1593273894/)
-    - a modern option
-- [ ] [TCP/IP Illustrated Series](https://en.wikipedia.org/wiki/TCP/IP_Illustrated)
-- [ ] [Head First Design Patterns](https://www.amazon.com/gp/product/0596007124/)
-    - a gentle introduction to design patterns
-- [ ] [Design Patterns: Elements of Reusable Object-Oriente​d Software](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)
-    - aka the "Gang Of Four" book, or GOF
-    - the canonical design patterns book
-- [ ] [UNIX and Linux System Administration Handbook, 5th Edition](https://www.amazon.com/UNIX-Linux-System-Administration-Handbook/dp/0134277554/)
-
-## Additional Learning
-
-These topics will likely not come up in an interview, but I added them to help you become a well-rounded
-software engineer, and to be aware of certain technologies and algorithms, so you'll have a bigger toolbox.
-
-- ### Compilers
-    - [ ] [How a Compiler Works in ~1 minute (video)](https://www.youtube.com/watch?v=IhC7sdYe-Jg)
-    - [ ] [Harvard CS50 - Compilers (video)](https://www.youtube.com/watch?v=CSZLNYF4Klo)
-    - [ ] [C++ (video)](https://www.youtube.com/watch?v=twodd1KFfGk)
-    - [ ] [Understanding Compiler Optimization (C++) (video)](https://www.youtube.com/watch?v=FnGCDLhaxKU)
-
-- ### Vi(m)
-    - Familiarize yourself with a unix-based code editor
-    - vi(m):
-        - [Editing With vim 01 - Installation, Setup, and The Modes (video)](https://www.youtube.com/watch?v=5givLEMcINQ&index=1&list=PL13bz4SHGmRxlZVmWQ9DvXo1fEg4UdGkr)
-        - [VIM Adventures](http://vim-adventures.com/)
-        - set of 4 videos:
-            - [The vi/vim editor - Lesson 1](https://www.youtube.com/watch?v=SI8TeVMX8pk)
-            - [The vi/vim editor - Lesson 2](https://www.youtube.com/watch?v=F3OO7ZIOaJE)
-            - [The vi/vim editor - Lesson 3](https://www.youtube.com/watch?v=ZYEccA_nMaI)
-            - [The vi/vim editor - Lesson 4](https://www.youtube.com/watch?v=1lYD5gwgZIA)
-        - [Using Vi Instead of Emacs](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#Using_Vi_instead_of_Emacs)
-
-- ### Unix command line tools
-    - I filled in the list below from good tools. Not important for Interview. But good for day to day work
-    - [ ] bash
-    - [ ] cat
-    - [ ] grep
-    - [ ] sed
-    - [ ] awk
-    - [ ] curl or wget
-    - [ ] sort
-    - [ ] tr
-    - [ ] uniq
-    - [ ] [strace](https://en.wikipedia.org/wiki/Strace)
-    - [ ] [tcpdump](https://danielmiessler.com/study/tcpdump/)
-    
-- ### Balanced search trees
-    - Know at least one type of balanced binary tree (and know how it's implemented):
-    - "Among balanced search trees, AVL and 2/3 trees are now passé, and red-black trees seem to be more popular.
-        A particularly interesting self-organizing data structure is the splay tree, which uses rotations
-        to move any accessed key to the root." - Skiena
-    - Of these, I chose to implement a splay tree. From what I've read, you won't implement a
-        balanced search tree in your interview. But I wanted exposure to coding one up
-        and let's face it, splay trees are the bee's knees. I did read a lot of red-black tree code.
-        - splay tree: insert, search, delete functions
-        If you end up implementing red/black tree try just these:
-        - search and insertion functions, skipping delete
-    - I want to learn more about B-Tree since it's used so widely with very large data sets.
-    - [ ] [Self-balancing binary search tree](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree)
-
-    - [ ] **AVL trees**
-        - In practice:
-            From what I can tell, these aren't used much in practice, but I could see where they would be:
-            The AVL tree is another structure supporting O(log n) search, insertion, and removal. It is more rigidly
-            balanced than red–black trees, leading to slower insertion and removal but faster retrieval. This makes it
-            attractive for data structures that may be built once and loaded without reconstruction, such as language
-            dictionaries (or program dictionaries, such as the opcodes of an assembler or interpreter).
-
-    - [ ] **Splay trees**
-        - In practice:
-            Splay trees are typically used in the implementation of caches, memory allocators, routers, garbage collectors,
-            data compression, ropes (replacement of string used for long text strings), in Windows NT (in the virtual memory,
-            networking and file system code) etc.
-
-    - [ ] **Red/black trees**
-        - these are a translation of a 2-3 tree (see below)
-        - In practice:
-            Red–black trees offer worst-case guarantees for insertion time, deletion time, and search time.
-            Not only does this make them valuable in time-sensitive applications such as real-time applications,
-            but it makes them valuable building blocks in other data structures which provide worst-case guarantees;
-            for example, many data structures used in computational geometry can be based on red–black trees, and
-            the Completely Fair Scheduler used in current Linux kernels uses red–black trees. In the version 8 of Java,
-            the Collection HashMap has been modified such that instead of using a LinkedList to store identical elements with poor
-            hashcodes, a Red-Black tree is used.
-        - [ ] [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
-        - [ ] [An Introduction To Binary Search And Red Black Tree](https://www.topcoder.com/community/data-science/data-science-tutorials/an-introduction-to-binary-search-and-red-black-trees/)
-    
-    - [ ] **N-ary (K-ary, M-ary) trees**
-        - note: the N or K is the branching factor (max branches)
-        - binary trees are a 2-ary tree, with branching factor = 2
-        - 2-3 trees are 3-ary
-        - [ ] [K-Ary Tree](https://en.wikipedia.org/wiki/K-ary_tree)
-
-    - [ ] **B-Trees**
-        - fun fact: it's a mystery, but the B could stand for Boeing, Balanced, or Bayer (co-inventor)
-        - In Practice:
-            B-Trees are widely used in databases. Most modern filesystems use B-trees (or Variants). In addition to
-            its use in databases, the B-tree is also used in filesystems to allow quick random access to an arbitrary
-            block in a particular file. The basic problem is turning the file block i address into a disk block
-            (or perhaps to a cylinder-head-sector) address.
-        - [ ] [B-Tree](https://en.wikipedia.org/wiki/B-tree)
