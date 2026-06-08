@@ -379,3 +379,159 @@ Prepare 2–3 stories for each. Use STAR format. Have specifics: scope, impact, 
 Keep learning — but deliberately. Pick one area per quarter to go deep on, not broad on everything.
 
 You're never really done.
+
+---
+
+## Two-Month Learning Plan: Jun 8 → Aug 8
+
+**How to use this:**
+- Each day is ~1.5–2 hours of focused study
+- DDIA = *Designing Data-Intensive Applications* (Kleppmann) — one chapter per designated day, all 12 done by Day 28
+- Buffer days are for catching up, re-reading anything unclear, or just resting
+- Weeks 1–2 are intentionally the most exciting material — build momentum first
+
+---
+
+### Week 1 — Jun 8–14 · LLMs & Generative AI *(easy wins)*
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 1 | Sun Jun 8 | Transformers: self-attention, multi-head attention, positional encoding | Ch 1 — Reliability, Scalability, Maintainability |
+| 2 | Mon Jun 9 | Pre-training, tokenization (BPE), fine-tuning, LoRA/QLoRA, RLHF & DPO | — |
+| 3 | Tue Jun 10 | RAG: chunking, embedding models, vector DBs, hybrid search, reranking | Ch 2 — Data Models & Query Languages |
+| 4 | Wed Jun 11 | Agents & Tool Use: ReAct, function calling, MCP, multi-agent orchestration | — |
+| 5 | Thu Jun 12 | Prompt engineering (CoT, few-shot, structured output), evaluation (RAGAS, LLM-as-judge), safety & guardrails | — |
+| 6 | Fri Jun 13 | Inference optimization: quantization (GPTQ/AWQ), KV cache, speculative decoding, vLLM | — |
+| 7 | **Sat Jun 14** | **BUFFER** — catch up / watch Karpathy's [Let's build GPT](https://www.youtube.com/watch?v=kCc8FmEb1nY) | — |
+
+---
+
+### Week 2 — Jun 15–21 · Apache Spark
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 8 | Sun Jun 15 | Spark Architecture: driver/executor, DAG scheduler, jobs/stages/tasks, Catalyst optimizer & Tungsten | Ch 3 — Storage & Retrieval |
+| 9 | Mon Jun 16 | Spark APIs: RDD vs DataFrame vs Dataset, Spark SQL, UDFs vs Pandas UDFs, schema evolution | — |
+| 10 | Tue Jun 17 | Performance I: wide vs narrow deps, shuffles, partitioning, AQE, skew handling + salting | Ch 4 — Encoding & Evolution |
+| 11 | Wed Jun 18 | Performance II: broadcast joins, caching/persist, memory management, small files, reading Spark UI | — |
+| 12 | Thu Jun 19 | File formats (Parquet/ORC/Avro) + Delta Lake (ACID, time travel, MERGE, OPTIMIZE, ZORDER) + Iceberg | Ch 5 — Replication |
+| 13 | Fri Jun 20 | Structured Streaming: triggers, watermarks, stateful aggregations, Kafka source/sink, checkpointing | — |
+| 14 | **Sat Jun 21** | **BUFFER** — catch up / Spark UI practice on a real job | — |
+
+---
+
+### Week 3 — Jun 22–28 · Data Engineering & Pipelines
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 15 | Sun Jun 22 | Batch pipeline design: ETL/ELT patterns, idempotency, deduplication, late data, SCD Type 1/2 | Ch 6 — Partitioning |
+| 16 | Mon Jun 23 | Data quality: Deequ, Great Expectations, DQ gates in CI/CD, lineage & governance | — |
+| 17 | Tue Jun 24 | Data Modeling: star/snowflake schema, dimensional modeling, dbt (models, snapshots, tests, macros) | Ch 7 — Transactions |
+| 18 | Wed Jun 25 | Orchestration: Airflow DAGs, sensors, dynamic task mapping, backfill; Dagster asset-based model | — |
+| 19 | Thu Jun 26 | Lakehouse: medallion architecture (bronze/silver/gold), Unity Catalog, RBAC, data contracts | — |
+| 20 | Fri Jun 27 | Spark on k8s (`spark-on-k8s-operator`, dynamic allocation) + Databricks: Workflows, Delta Live Tables | Ch 8 — The Trouble with Distributed Systems |
+| 21 | **Sat Jun 28** | **BUFFER** — revise weeks 1–3, fill gaps | — |
+
+---
+
+### Week 4 — Jun 29–Jul 5 · System Design Foundations *(DDIA completes this week)*
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 22 | Sun Jun 29 | SD foundations: CAP theorem, consistency models (linearizability → eventual), back-of-envelope math | Ch 9 — Consistency & Consensus |
+| 23 | Mon Jun 30 | Databases deep: B-tree vs LSM indexes, MVCC, WAL, vacuum, connection pooling (PgBouncer) | — |
+| 24 | Tue Jul 1 | Replication & sharding: single/multi-leader, leaderless, consistent hashing, resharding | — |
+| 25 | Wed Jul 2 | NoSQL trade-offs: Cassandra (wide-column), DynamoDB (key-value), Redis (data structures, Cluster) | — |
+| 26 | Thu Jul 3 | Caching: cache-aside/write-through/write-behind, LRU/LFU, stampede prevention, multi-level caching | Ch 10 — Batch Processing |
+| 27 | Fri Jul 4 | Kafka deep: producer (acks, idempotent), consumer groups, log compaction, outbox + event sourcing | Ch 11 — Stream Processing |
+| 28 | **Sat Jul 5** | **BUFFER** — DDIA final chapter + system design catch-up | Ch 12 — The Future of Data Systems |
+
+> ✅ **DDIA complete after Day 28**
+
+---
+
+### Week 5 — Jul 6–12 · System Design Practice
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 29 | Sun Jul 6 | Networking & APIs: L4/L7 LB, CDN, REST vs gRPC vs GraphQL, API versioning, rate limiting (token bucket) | — |
+| 30 | Mon Jul 7 | Design: URL Shortener + Rate Limiter — full write-up (components, DB, scale) | — |
+| 31 | Tue Jul 8 | Design: News Feed / Timeline + Notification System (fan-out on read vs write, push delivery) | — |
+| 32 | Wed Jul 9 | Design: Search Autocomplete (trie vs inverted index) + Distributed Cache (consistent hashing) | — |
+| 33 | Thu Jul 10 | Design: Ride-Sharing (geohash/quadtree, matching) + Video Streaming (CDN, adaptive bitrate) | — |
+| 34 | Fri Jul 11 | Design: Payments/Ledger (idempotency, double-spend) + Web Crawler (politeness, dedup) | — |
+| 35 | **Sat Jul 12** | **BUFFER** — re-do 1–2 designs that felt weak | — |
+
+---
+
+### Week 6 — Jul 13–19 · Distributed Systems, HA & Observability
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 36 | Sun Jul 13 | Distributed systems: Raft (leader election, log replication), Paxos conceptual, vector clocks, gossip protocol | — |
+| 37 | Mon Jul 14 | HA & reliability: SLIs/SLOs/error budgets, burn-rate alerting, chaos engineering, DR (RPO vs RTO) | — |
+| 38 | Tue Jul 15 | Observability: OpenTelemetry, distributed tracing (Jaeger), USE/RED methods, structured logging | — |
+| 39 | Wed Jul 16 | Microservices: service mesh (Istio/Linkerd), API gateway, DDD bounded contexts, strangler fig | — |
+| 40 | Thu Jul 17 | Practice: LLM Inference Service (GPU batching, KV cache serving, autoscaling, cost model) | — |
+| 41 | Fri Jul 18 | Practice: ML Platform / Feature Store (online vs offline, point-in-time correctness, serving latency) | — |
+| 42 | **Sat Jul 19** | **BUFFER** — catch up / revise distributed systems | — |
+
+---
+
+### Week 7 — Jul 20–26 · ML Engineering & CS Core
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 43 | Sun Jul 20 | Classical ML depth: gradient boosting internals (XGBoost/LightGBM), feature engineering, leakage, cross-validation | — |
+| 44 | Mon Jul 21 | Deep learning: backprop, batch norm, dropout, optimizer choices, mixed precision training | — |
+| 45 | Tue Jul 22 | MLOps: experiment tracking (W&B/MLflow), CI/CD for models, model registry, shadow deployment, rollback | — |
+| 46 | Wed Jul 23 | ML System Design: recommendation systems (two-tower, retrieval + ranking), A/B testing, monitoring drift | — |
+| 47 | Thu Jul 24 | Concurrency: JVM memory model, happens-before, virtual threads (JDK 21), async patterns (CompletableFuture) | — |
+| 48 | Fri Jul 25 | Design Patterns + SOLID — work through 5 real scenarios, not definitions | — |
+| 49 | **Sat Jul 26** | **BUFFER** — weak areas drill | — |
+
+---
+
+### Week 8 — Jul 27–Aug 2 · Coding Practice & Mocks
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 50 | Sun Jul 27 | Coding: Graph problems — BFS/DFS, topological sort, shortest path (Dijkstra), union-find | — |
+| 51 | Mon Jul 28 | Coding: Tree problems — LCA, diameter, path sum, serialization/deserialization | — |
+| 52 | Tue Jul 29 | Coding: Sliding window + two pointers + monotonic stack (3–4 problems each) | — |
+| 53 | Wed Jul 30 | Coding: Heap problems (k-largest, merge k sorted, median stream) + interval problems | — |
+| 54 | Thu Jul 31 | Coding: DP — state machine, interval DP, digit DP, backtracking with pruning | — |
+| 55 | Fri Aug 1 | Behavioral: write and rehearse 20 STAR stories out loud (record yourself) | — |
+| 56 | **Sat Aug 2** | **BUFFER** — weak-area drill + timed mock session | — |
+
+---
+
+### Week 9 — Aug 3–8 · Final Revision & Polish
+
+| Day | Date | Main Topic | DDIA Reading |
+|-----|------|-----------|--------------|
+| 57 | Sun Aug 3 | Revision: AI/LLM path — transformers, RAG, agents, inference, system design | — |
+| 58 | Mon Aug 4 | Revision: Spark + Data Engineering — architecture, performance, Delta, streaming, orchestration | — |
+| 59 | Tue Aug 5 | Revision: System Design key patterns + re-skim DDIA Ch 3 (Storage), 5 (Replication), 7 (Transactions), 9 (Consensus) | — |
+| 60 | Wed Aug 6 | Mock: full system design interview (45 min timed, write it up, critique yourself) | — |
+| 61 | Thu Aug 7 | Mock: coding × 2 (timed) + run through behavioral stories | — |
+| 62 | Fri Aug 8 | Light re-read of your weakest area notes — then close the laptop. You're ready. | — |
+
+---
+
+### DDIA Chapter Map
+
+| Chapter | Title | Day |
+|---------|-------|-----|
+| 1 | Reliable, Scalable, and Maintainable Applications | Day 1 — Jun 8 |
+| 2 | Data Models and Query Languages | Day 3 — Jun 10 |
+| 3 | Storage and Retrieval | Day 8 — Jun 15 |
+| 4 | Encoding and Evolution | Day 10 — Jun 17 |
+| 5 | Replication | Day 12 — Jun 19 |
+| 6 | Partitioning | Day 15 — Jun 22 |
+| 7 | Transactions | Day 17 — Jun 24 |
+| 8 | The Trouble with Distributed Systems | Day 20 — Jun 27 |
+| 9 | Consistency and Consensus | Day 22 — Jun 29 |
+| 10 | Batch Processing | Day 26 — Jul 3 |
+| 11 | Stream Processing | Day 27 — Jul 4 |
+| 12 | The Future of Data Systems | Day 28 — Jul 5 |
